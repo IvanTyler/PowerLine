@@ -1,0 +1,6 @@
+node_modules/
+.bundle
+.DS_Store
+tmp/
+.idea/
+*.swp
