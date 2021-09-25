@@ -13,6 +13,26 @@
 <body>
     <main class="main">
         <div class="container container-cars">
+            <div id="hidden">
+                <form name="formEditUser" class="form-edit-user">
+                    <img class="form-edit-user__closeForm" src="/public/icon/close-white.png" alt="">
+                    <h3 class="form-edit-user__title">Редактировать данные владельца</h3>
+                    <div class="adding-products-item">
+                        <input placeholder="Введите имя" type="text" name="nameUser" id="nameUser"
+                            class="edit-user-input necessarily">
+                    </div>
+                    <div class="adding-products-item">
+                        <input placeholder="Введите email" type="email" name="userEmail" id="userEmail"
+                            class="edit-user-input necessarily">
+                    </div>
+                    <div class="adding-products-item">
+                        <input placeholder="Введите владельца" type="text" name="userOwner" id="userOwner"
+                            class="edit-user-input necessarily">
+                    </div>
+
+                    <button class="button-edit-userData">Изменить данные владельца</button>
+                </form>
+            </div>
         </div>
     </main>
 </body>

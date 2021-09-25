@@ -14,3 +14,204 @@
   padding-left: 20px;
   padding-right: 20px;
 }
+.container-cars .title-car {
+  text-align: center;
+}
+.container-cars .description-car {
+  margin-top: 18px;
+}
+.container-cars .description-car .title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.container-cars .description-car .characteristic-car-item .characteristic-name {
+  display: inline-block;
+  width: 75px;
+}
+.container-cars .description-car .characteristic-car-item .characteristic-value {
+  margin-left: 5px;
+}
+.container-cars .description-car .characteristic-car-item:not(:first-child) {
+  margin-top: 3px;
+}
+.container-cars .description-car .car-options-list {
+  margin-top: 7px;
+}
+.container-cars .description-car .car-options-list .car-options-item:not(:first-child) {
+  margin-top: 3px;
+}
+.container-cars .description-car .car-option-name {
+  display: inline-block;
+  width: 45px;
+  margin-right: 5px;
+}
+.container-cars .description-car.first {
+  margin-top: 25px;
+}
+.container-cars .data-owner {
+  margin-top: 25px;
+}
+.container-cars .data-owner .wrapper-data-user {
+  margin-top: 7px;
+}
+.container-cars .data-owner .wrapper-data-user .data-owner-item .text {
+  display: inline-block;
+  width: 80px;
+  margin-right: 5px;
+}
+.container-cars .data-owner .wrapper-data-user .data-owner-item:not(:first-child) {
+  margin-top: 3px;
+}
+.container-cars .data-owner .edit-user-owner {
+  width: 90px;
+  padding: 5px;
+  margin-top: 10px;
+  font-size: 16px;
+  border: solid 2px #fdce5c;
+  background-color: #ffd66e;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.container-cars .data-owner .edit-user-owner:hover {
+  background-color: #ffb35f;
+  border: solid 2px #ffb35f;
+}
+.container-cars .form-edit-user {
+  position: relative;
+  width: 310px;
+  padding: 24px;
+  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
+  border-radius: 8px;
+  background-color: #1991eb;
+}
+.container-cars .form-edit-user__title {
+  text-align: center;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: #ffffff;
+}
+.container-cars .form-edit-user__closeForm {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+}
+.container-cars .form-edit-user .adding-products-item {
+  position: relative;
+  margin-top: 20px;
+}
+.container-cars .form-edit-user .adding-products-item .label-adding-products {
+  position: relative;
+  font-size: 12px;
+  line-height: 13px;
+  letter-spacing: -0.02em;
+  color: #49485e;
+}
+.container-cars .form-edit-user .adding-products-item .label-adding-products::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: -5px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #ff8484;
+}
+.container-cars .form-edit-user .adding-products-item .label-adding-products.product-description::after {
+  display: none;
+}
+.container-cars .form-edit-user .edit-user-input {
+  min-width: 100%;
+  height: 36px;
+  margin-top: 4px;
+  padding-left: 16px;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  line-height: 15px;
+  border: solid 1px #ececec;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  transition: 0.2s;
+}
+.container-cars .form-edit-user .edit-user-input::placeholder,
+.container-cars .form-edit-user .edit-user-input::placeholder {
+  color: #b4b4b4;
+}
+.container-cars .form-edit-user input[type="number"]::-webkit-outer-spin-button,
+.container-cars .form-edit-user input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.container-cars .form-edit-user input[type="number"] {
+  -moz-appearance: textfield;
+}
+.container-cars .form-edit-user input[type="number"]:hover,
+.container-cars .form-edit-user input[type="number"]:focus {
+  -moz-appearance: number-input;
+}
+.container-cars .form-edit-user input[type=number]::-webkit-inner-spin-button,
+.container-cars .form-edit-user input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.container-cars .form-edit-user .edit-user-input.error {
+  border: 2px solid red;
+}
+.container-cars .form-edit-user .edit-user-input.error::placeholder {
+  color: red;
+}
+.container-cars .form-edit-user .adding-products-textarea {
+  resize: none;
+  padding-top: 11px;
+  min-height: 108px;
+  max-height: 108px;
+  max-width: 284px;
+}
+.container-cars .form-edit-user .button-edit-userData {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 36px;
+  width: 100%;
+  margin-top: 24px;
+  border-radius: 4px;
+  background-color: #fd6e74;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 15px;
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.container-cars .form-edit-user .button-edit-userData:hover {
+  background-color: #e7464d;
+}
+.container-cars .form-edit-user .button-edit-userData.active {
+  background-color: #7bae73;
+  color: #fff;
+}
+.container-cars #hidden {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  left: 0;
+  top: 0;
+  justify-content: center;
+  -ms-align-items: center;
+  align-items: center;
+  opacity: 0;
+  z-index: -5;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}

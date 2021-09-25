@@ -2,51 +2,78 @@ console.log('js work')
 
 const $containerCars = document.querySelector('.container-cars')
 
-const getDataServerCarKia = async () => {
+const getDataServerCar = async () => {
     const response = await fetch('http://109.236.74.74:9900/getdata')
-
     const dataFromServer = await response.json()
+    try {
+        const dataCarHTML = createDataCarHTML(dataFromServer)
+        $containerCars.insertAdjacentHTML('afterbegin', dataCarHTML)
 
-    const dataCarHTML = createDataCarHTML(dataFromServer)
+        const characteristicCar = dataFromServer.Item.KeyValues
+        const characteristicCarArr = Object.entries(characteristicCar)
+        characteristicCarFunc(characteristicCarArr)
 
-    $containerCars.insertAdjacentHTML('afterbegin', dataCarHTML)
+        const CarOptions = dataFromServer.Item.Original.CarOptions
+        const CarOptionsSelect = Object.entries(CarOptions)
+        CarOptionsFunc(CarOptionsSelect)
 
-    function createDataCarHTML(dataCar) {
-        return `
-        <h1 class="title-car">${dataCar.Item.Title}</h1>
+        openWindowEditOwner()
 
-        <section class="description-car">
-            <h2 class="description-car-title">Описание</h2>
-            <p class="description">${dataCar.Item.Description}</p>
-        </section>
+        const $closeFormEdit = document.querySelector('.form-edit-user__closeForm')
 
-        <section class="characteristic-car">
-            <h2 class="characteristic-car-title">Характеристика машины</h2>
-            <ul class="characteristic-car-list"></ul>
-        </section>
-        
-        <section class="section-car-options">
-            <h2 class="car-options-brand">Бренд: ${dataCar.Item.Original.Make}</h2>
-            <h3 class="car-options-model">Модель: ${dataCar.Item.Original.Model}</h3>
-            <ul class="car-options-list"></ul>
-        </section>
+        const $modalWindow = document.querySelector('#hidden')
 
-        <section class="section-data-owner">
-            <h2 class="">Данные владельца</h2>
-            <div class="wrapper-data-user>
-                <div class="data-owner-item name">Имя: ${dataCar.Garage.Name}</div>
-                <div class="data-owner-item Email">Email: ${dataCar.Garage.Email}</div>
-                <div class="data-owner-item owner">Владелец: ${dataCar.Garage.Owner}</div>
-            </div>
-        </section>
-        `
+        $closeFormEdit.addEventListener('click', () => {
+            $modalWindow.style.opacity = '0';
+            $modalWindow.style.zIndex = '-5';
+        })
+
+    } catch {
+        $containerCars.classList.add('not-data-car')
+        $containerCars.innerText = 'Данных о машине нет.'
     }
 
-    const KeyValues = dataFromServer.Item.KeyValues
+}
 
-    const characteristicCar = Object.entries(KeyValues)
+getDataServerCar()
 
-    for (let [key, value] of characteristicCar) {
+function createDataCarHTML(dataCar) {
+    return `
+    <section class="data-car">
+        <h1 class="title-car">${dataCar.Item.Title}</h1>
+
+        <div class="description-car first">
+            <h2 class="title">Описание</h2>
+            <p class="description">${dataCar.Item.Description}</p>
+        </div>
+
+        <div class="description-car">
+            <h2 class="title">Характеристика</h2>
+            <ul class="characteristic-car-list"></ul>
+        </div>
+        
+        <div class="description-car">
+            <h2 class="title">Модель: ${dataCar.Item.Original.Model}</h2>
+            <h3 class="subtitle">Бренд: ${dataCar.Item.Original.Make}</h3>
+            <ul class="car-options-list"></ul>
+        </div>
+
+        <div class="data-owner">
+            <h2 class="title">Данные владельца</h2>
+            <div class="wrapper-data-user">
+                <div class="data-owner-item"><span class="text">Имя:</span> <span class="userName">${dataCar.Garage.Name}</span></div>
+                <div class="data-owner-item"><span class="text">Email:</span> <span class="userEmail">${dataCar.Garage.Email}</span></div>
+                <div class="data-owner-item"><span class="text">Владелец:</span> <span class="userOwner">${dataCar.Garage.Owner}</span></div>
+            </div>
+            <button class="edit-user-owner">Edit</button>
+        </div>
+    </section>
+    `
+}
+
+function characteristicCarFunc(array) {
+
+    for (let [key, value] of array) {
         const $characteristicCarList = document.querySelector('.characteristic-car-list')
 
         const characteristicCarSelect = document.createElement('li')
@@ -57,45 +84,114 @@ const getDataServerCarKia = async () => {
         characteristicCarSelectName.innerText = key
 
         characteristicCarSelect.appendChild(characteristicCarSelectName)
-        
+
         const characteristicCarSelectValues = document.createElement('span')
         characteristicCarSelectValues.classList.add('characteristic-value')
         characteristicCarSelectValues.innerText = value
 
         characteristicCarSelect.appendChild(characteristicCarSelectValues)
-        
+
         $characteristicCarList.appendChild(characteristicCarSelect)
     }
+}
 
+function CarOptionsFunc(array) {
 
-    const CarOptions = dataFromServer.Item.Original.CarOptions
-    console.log(CarOptions)
-
-    const CarOptionsSelect = Object.entries(CarOptions)
-
-    for (let [key, value] of CarOptionsSelect) {
+    for (let [key, value] of array) {
         const $carOptionsList = document.querySelector('.car-options-list')
 
         const carOptionsListItem = document.createElement('li')
-        carOptionsListItem.classList.add('car-options-list-item')
+        carOptionsListItem.classList.add('car-options-item')
 
-        const carOptionsListItemName = document.createElement('span')
-        carOptionsListItemName.classList.add('car-option-list-item-name')
-        carOptionsListItemName.innerText = key
+        const carOptionstitle = document.createElement('span')
+        carOptionstitle.classList.add('car-option-name')
+        carOptionstitle.innerText = key
 
-        carOptionsListItem.appendChild(carOptionsListItemName)
+        carOptionsListItem.appendChild(carOptionstitle)
 
-        const carOptionsListItemValue = document.createElement('span')
-        carOptionsListItemValue.classList.add('car-option-list-item-value')
-        carOptionsListItemValue.innerText = value
+        const carOptionsListCode = document.createElement('span')
+        carOptionsListCode.classList.add('car-option-value')
+        carOptionsListCode.innerText = value
 
-        carOptionsListItem.appendChild(carOptionsListItemValue)
-        
+        carOptionsListItem.appendChild(carOptionsListCode)
+
         $carOptionsList.appendChild(carOptionsListItem)
     }
-
-    console.log(dataFromServer)
-
 }
 
-getDataServerCarKia()
+function openWindowEditOwner () {
+        const $modalWindow = document.querySelector('#hidden')
+        const $buttonEditUserData = document.querySelector('.edit-user-owner')      
+
+        $buttonEditUserData.addEventListener('click', () => {
+            $modalWindow.style.opacity = '1';
+            $modalWindow.style.zIndex = '1';
+        })
+}
+
+
+
+const $formEditUser = document.forms.formEditUser;
+const $nameUser = document.querySelector('#nameUser')
+const $userEmail = document.querySelector('#userEmail')
+const $userOwner = document.querySelector('#userOwner')
+
+const $modalWindow = document.querySelector('#hidden')
+
+
+$formEditUser?.addEventListener('input', (event) => {
+    if (event.target.classList.contains('necessarily')) {
+        const lengthStringNameUser = $nameUser.value.trim().length
+        const lengthStringUserEmail = $userEmail.value.trim().length
+        const lengthStringUserOwner = $userOwner.value.trim().length
+        if ((lengthStringNameUser >= 1) && (lengthStringUserEmail >= 1) && (lengthStringUserOwner >= 1)) {
+            document.querySelector('.button-edit-userData').classList.add('active')
+        } else {
+            document.querySelector('.button-edit-userData').classList.remove('active')
+        }
+    }
+})
+
+
+$formEditUser?.addEventListener('submit', (event) => {
+    event.preventDefault()
+    const formData = Object.fromEntries(new FormData(event.target))
+    if (!$nameUser.value) {
+        $nameUser.classList.add('error')
+    }
+    if (!$userEmail.value) {
+        $userEmail.classList.add('error')
+    }
+    if (!$userOwner.value) {
+        $userOwner.classList.add('error')
+    }
+    if (($nameUser.value) && ($userEmail.value) && ($userOwner.value)) {
+        document.querySelector('.button-edit-userData').classList.remove('active')
+        document.querySelector('.userName').innerText = formData.nameUser
+        document.querySelector('.userEmail').innerText = formData.userEmail
+        document.querySelector('.userOwner').innerText = formData.userOwner
+        $modalWindow.style.opacity = '0';
+        $modalWindow.style.zIndex = '-5';
+        $formEditUser.reset();
+        console.log(formData)
+    }
+})
+
+$nameUser?.addEventListener('focus', () => {
+    if ($nameUser.value !== ' ') {
+        $nameUser.classList.remove('error')
+    }
+})
+$userEmail?.addEventListener('focus', () => {
+    if ($userEmail.value !== ' ') {
+        $userEmail.classList.remove('error')
+    }
+})
+$userOwner?.addEventListener('focus', () => {
+    if ($userOwner.value !== ' ') {
+        $userOwner.classList.remove('error')
+    }
+})
+
+
+

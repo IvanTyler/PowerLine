@@ -15,4 +15,220 @@
     margin: 0 auto;
     padding-left: 20px;
     padding-right: 20px;
-} 
+}
+
+.container-cars {
+    .title-car {
+        text-align: center;
+    }
+    .description-car {
+        margin-top: 18px;
+        .title {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .characteristic-car-item {
+            .characteristic-name {
+                display: inline-block;
+                width: 75px;
+            }
+            .characteristic-value {
+                margin-left: 5px;
+            }
+            &:not(:first-child) {
+                margin-top: 3px;
+            }
+        }
+        .car-options-list {
+            margin-top: 7px;
+            .car-options-item {
+                &:not(:first-child) {
+                    margin-top: 3px;
+                }
+            }
+        }
+        .car-option-name {
+            display: inline-block;
+            width: 45px;
+            margin-right: 5px;
+        }
+    }
+    .description-car.first {
+        margin-top: 25px;
+    }
+    .data-owner {
+        margin-top: 25px;
+        .wrapper-data-user {
+            margin-top: 7px;
+            .data-owner-item {
+                .text {
+                    display: inline-block;
+                    width: 80px;
+                    margin-right: 5px;
+                }
+                &:not(:first-child) {
+                    margin-top: 3px;
+                }
+            }
+        }
+        .edit-user-owner {
+            width: 90px;
+            padding: 5px;
+            margin-top: 10px;
+            font-size: 16px;
+            border: solid 2px #fdce5c;
+            background-color: #ffd66e;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+            &:hover {
+                background-color: #ffb35f;
+                border: solid 2px #ffb35f;
+            }
+        }
+    }
+
+    .form-edit-user {
+        position: relative;
+        width: 310px;
+        padding: 24px;
+        box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
+        border-radius: 8px;
+        background-color: #1991eb;
+        &__title {
+            text-align: center;
+            font-size: 21px;
+            font-weight: 500;
+            line-height: 1.1;
+            color: #ffffff;
+        }
+        &__closeForm {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            cursor: pointer;
+        }
+        .adding-products-item {
+            position: relative; 
+            margin-top: 20px;
+            .label-adding-products {
+                position: relative;
+                font-size: 12px;
+                line-height: 13px;
+                letter-spacing: -0.02em;
+                color: #49485e;
+                &::after {
+                    content: '';
+                    display: inline-block;
+                    position: absolute;
+                    top: 0;
+                    right: -5px;
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 50%;
+                    background-color: #ff8484;
+                }
+            }
+            .label-adding-products.product-description {
+                &::after {
+                    display: none;
+                }
+            }
+        }
+        .edit-user-input {
+            min-width: 100%;
+            height: 36px;
+            margin-top: 4px;
+            padding-left: 16px;
+            border: none;
+            outline: none;
+            font-size: 12px;
+            line-height: 15px;
+            border-radius: 4px;
+            border: solid 1px #ececec;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            transition: 0.2s;
+            &::placeholder,
+            &::placeholder {
+                color: #b4b4b4;
+            }
+
+        }
+
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+        input[type="number"]:hover,
+        input[type="number"]:focus {
+            -moz-appearance: number-input;
+        }
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .edit-user-input.error {
+            border: 2px solid red;
+            &::placeholder { 
+                color: red;
+            }
+        }
+        .adding-products-textarea {
+            resize: none;
+            padding-top: 11px;
+            min-height: 108px;
+            max-height: 108px;
+            max-width: 284px;
+        }
+        .button-edit-userData {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 36px;
+            width: 100%;
+            margin-top: 24px;
+            border-radius: 4px;
+            background-color: #fd6e74;
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 15px;
+            color: #fff;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+            &:hover {
+                background-color: #e7464d;
+            }
+        }
+        .button-edit-userData.active {
+            background-color: #7bae73;
+            color: #fff;
+        }
+    }
+    #hidden {
+        position: fixed;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,.7);
+        left: 0;
+        top: 0;
+        justify-content: center;
+        -ms-align-items: center;
+        align-items: center;
+        opacity: 0;
+        z-index: -5;
+        -webkit-transition: all .3s;
+        -o-transition: all .3s;
+        transition: all .3s;
+    }
+}
