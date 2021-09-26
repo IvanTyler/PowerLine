@@ -6,13 +6,31 @@
   margin: 0;
 }
 .main {
-  margin-top: 30px;
+  position: relative;
+  height: 100vh;
+}
+.video-kia-sportage {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
+}
+.container-cars {
+  padding-top: 30px;
+}
+.container-cars .data-car {
+  background-color: rgba(41, 107, 133, 0.6);
+  box-shadow: 0 9px 19px 0 rgba(0, 0, 0, 0.37);
+  padding: 15px;
+  border-radius: 5px;
+  color: #fff;
 }
 .container-cars .title-car {
   text-align: center;
