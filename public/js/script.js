@@ -18,16 +18,11 @@ const getDataServerCar = async () => {
         CarOptionsFunc(CarOptionsSelect)
 
         openWindowEditOwner()
+        closeWindowEditOwner()
 
-        const $closeFormEdit = document.querySelector('.form-edit-user__closeForm')
-
-        const $modalWindow = document.querySelector('#hidden')
-
-        $closeFormEdit.addEventListener('click', () => {
-            $modalWindow.style.opacity = '0';
-            $modalWindow.style.zIndex = '-5';
-        })
-
+        document.querySelector('#nameUser').value = dataFromServer.Garage.Name
+        document.querySelector('#userEmail').value = dataFromServer.Garage.Email
+        document.querySelector('#userOwner').value = dataFromServer.Garage.Owner
     } catch {
         $containerCars.classList.add('not-data-car')
         $containerCars.innerText = 'Данных о машине нет.'
@@ -119,14 +114,24 @@ function CarOptionsFunc(array) {
     }
 }
 
-function openWindowEditOwner () {
-        const $modalWindow = document.querySelector('#hidden')
-        const $buttonEditUserData = document.querySelector('.edit-user-owner')      
+function openWindowEditOwner() {
+    const $modalWindow = document.querySelector('#hidden')
+    const $buttonEditUserData = document.querySelector('.edit-user-owner')
 
-        $buttonEditUserData.addEventListener('click', () => {
-            $modalWindow.style.opacity = '1';
-            $modalWindow.style.zIndex = '1';
-        })
+    $buttonEditUserData.addEventListener('click', () => {
+        $modalWindow.style.opacity = '1';
+        $modalWindow.style.zIndex = '1';
+    })
+}
+
+function closeWindowEditOwner() {
+    const $closeFormEdit = document.querySelector('.form-edit-user__closeForm')
+    const $modalWindow = document.querySelector('#hidden')
+
+    $closeFormEdit.addEventListener('click', () => {
+        $modalWindow.style.opacity = '0';
+        $modalWindow.style.zIndex = '-5';
+    })
 }
 
 
@@ -170,9 +175,13 @@ $formEditUser?.addEventListener('submit', (event) => {
         document.querySelector('.userName').innerText = formData.nameUser
         document.querySelector('.userEmail').innerText = formData.userEmail
         document.querySelector('.userOwner').innerText = formData.userOwner
+
+        $nameUser.value = formData.nameUser
+        $userEmail.value = formData.userEmail
+        $userOwner.value = formData.userOwner
+
         $modalWindow.style.opacity = '0';
         $modalWindow.style.zIndex = '-5';
-        $formEditUser.reset();
         console.log(formData)
     }
 })
