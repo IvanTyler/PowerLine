@@ -28,12 +28,13 @@
 .container-cars .data-car {
   background-color: rgba(41, 107, 133, 0.6);
   box-shadow: 0 9px 19px 0 rgba(0, 0, 0, 0.37);
-  padding: 15px;
+  padding: 30px 20px 20px 20px;
   border-radius: 5px;
   color: #fff;
 }
 .container-cars .title-car {
   text-align: center;
+  font-size: 30px;
 }
 .container-cars .description-car {
   margin-top: 18px;
