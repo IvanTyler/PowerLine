@@ -117,37 +117,15 @@
   right: 12px;
   cursor: pointer;
 }
-.container-cars .form-edit-user .adding-products-item {
+.container-cars .form-edit-user .adding-user-item {
   position: relative;
   margin-top: 20px;
-}
-.container-cars .form-edit-user .adding-products-item .label-adding-products {
-  position: relative;
-  font-size: 12px;
-  line-height: 13px;
-  letter-spacing: -0.02em;
-  color: #49485e;
-}
-.container-cars .form-edit-user .adding-products-item .label-adding-products::after {
-  content: '';
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  right: -5px;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: #ff8484;
-}
-.container-cars .form-edit-user .adding-products-item .label-adding-products.product-description::after {
-  display: none;
 }
 .container-cars .form-edit-user .edit-user-input {
   min-width: 100%;
   height: 36px;
   margin-top: 4px;
   padding-left: 16px;
-  border: none;
   outline: none;
   font-size: 12px;
   line-height: 15px;
@@ -159,23 +137,6 @@
 .container-cars .form-edit-user .edit-user-input::placeholder,
 .container-cars .form-edit-user .edit-user-input::placeholder {
   color: #b4b4b4;
-}
-.container-cars .form-edit-user input[type="number"]::-webkit-outer-spin-button,
-.container-cars .form-edit-user input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-.container-cars .form-edit-user input[type="number"] {
-  -moz-appearance: textfield;
-}
-.container-cars .form-edit-user input[type="number"]:hover,
-.container-cars .form-edit-user input[type="number"]:focus {
-  -moz-appearance: number-input;
-}
-.container-cars .form-edit-user input[type=number]::-webkit-inner-spin-button,
-.container-cars .form-edit-user input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 .container-cars .form-edit-user .edit-user-input.error {
   border: 2px solid red;
